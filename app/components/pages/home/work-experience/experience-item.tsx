@@ -33,7 +33,6 @@ export const ExperienceItem = () => {
                     </p>
                 </div>
                 <p className="text-gray-400 text-sm mb-3 mt-6 font-semibold">Competência</p>
-
                 <div className="flex gap-x-2 gap-y-3 flex-wrap lg:max-w-[350px] mb-8">
                     <TechBadge name="React" />
                     <TechBadge name="React" />
