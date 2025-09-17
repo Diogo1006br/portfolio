@@ -6,7 +6,7 @@ import { HomePageData } from "./types/page-info";
 import { fetchHygraphQuery } from "./utils/fetch-hygraph-query";
 
 
-const getPageData = async (): Promise<HomePageData>  => {
+const getPageData = async (): Promise<HomePageData> => {
   const query = `
     query PageInfoQuery {
       page(where: {slug: "home"}) {
@@ -28,6 +28,17 @@ const getPageData = async (): Promise<HomePageData>  => {
           name
           startDate
         }
+        highlightProjects {
+          slug
+          thumbnail {
+            url
+          }
+          title
+          shortDescription
+          technologies {
+            name
+          }
+        }  
       }
     }
   `
@@ -41,12 +52,11 @@ const getPageData = async (): Promise<HomePageData>  => {
 
 export default async function Home() {
   const { page: pageData } = await getPageData();
-
   return (
     <>
       <HeroSection homeInfo={pageData} />
-      <KnownTechs />
-      <HighlightedProjects />
+      <KnownTechs techs={pageData.knownTechs} />
+      <HighlightedProjects projects={pageData.highlightProjects} />
       <WorkExperience />
     </>
   )

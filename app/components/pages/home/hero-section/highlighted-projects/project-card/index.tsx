@@ -1,21 +1,26 @@
 
 import { Link } from "@/app/components/link"
 import { TechBadge } from "@/app/components/tech-badge"
+import { Project } from "@/app/types/projects"
 import Image from "next/image"
 import { HiArrowNarrowRight } from "react-icons/hi"
 
 
-export const ProjectCard = () => {
+type ProjectCardProps = {
+  project: Project
+}
+
+export const ProjectCard = ({ project }: ProjectCardProps) => {
     return (
         <div className="flex gap-6 lg:gap-12 flex-col lg:flex-row">
             <div className="w-full h-full">
                 <Image
+                    src={project.thumbnail.url}
                     width={420}
                     height={304}
-                    src="/images/image.png"
-                    alt="GIDF"
-                    className="w-full h-[200px] sm:h-[300px] lg:w-[420px] min-h-full object-cover rounded-lg"
-                />
+                    alt={`Thumbnail do projeto ${project.title}`}
+                    className="w-full h-full object-cover rounded-lg"
+                    />
             </div>
 
             <div>
@@ -26,25 +31,23 @@ export const ProjectCard = () => {
                         alt=""
                         src="/images/icons/project-title-icon.svg"
                     />
-                    GIDF
+                    {project.title}
                 </h3>
 
                 <p className="text-gray-400 my-6">
-                    O GDFI é uma plataforma inovadora destinada a otimizar o gerenciamento de inspeções de infraestrutura urbana, focada na eficiência e qualidade. O sistema foi projetado para engenheiros civis, permitindo a coleta de dados, análises detalhadas e geração de relatórios de inspeção com alta precisão. A plataforma combina uma interface web intuitiva com uma API robusta, garantindo agilidade e consistência nos processos de inspeção, além de facilitar o acesso a dados e informações críticas para tomadas de decisão.
+                    {project.shortDescription}
                 </p>
 
                 <div className="flex gap-x-2 gap-y-3 flex-wrap mb-8 lg:max-w-[350px]">
-                    <TechBadge name="Next.js" />
-                    <TechBadge name="Next.js" />
-                    <TechBadge name="Next.js" />
-                    <TechBadge name="Next.js" />
-                    <TechBadge name="Next.js" />
-                    <TechBadge name="Next.js" />
+                    {project.technologies.map(tech => (
+                        <TechBadge key={`${project.title}-tech-${tech.name}`} name={tech.name} />
+
+                    ))}
                 </div>
 
-                <Link href="/projects/gidf">
-                Ver projeto
-                <HiArrowNarrowRight/>
+                <Link href={`/projects/${project.slug}`}>
+                    Ver projeto
+                    <HiArrowNarrowRight />
                 </Link>
             </div>
         </div>
