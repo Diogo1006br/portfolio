@@ -40,6 +40,22 @@ const getPageData = async (): Promise<HomePageData> => {
           }
         }  
       }
+      workExperiences {
+        companyLogo {
+          url
+        }
+        role
+        companyName
+        companyUrl
+        startDate
+        endDate
+        description {
+          raw
+        }
+        technologies {
+          name
+        }
+      }
     }
   `
 

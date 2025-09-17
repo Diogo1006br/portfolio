@@ -1,7 +1,13 @@
 import { TechBadge } from "@/app/components/tech-badge"
+import { WorkExperience } from "@/app/types/work-experience"
 import Image from "next/image"
 
-export const ExperienceItem = () => {
+
+type ExperienceItemProps = {
+    experience: WorkExperience
+}
+
+export const ExperienceItem = ({experience}:ExperienceItemProps) => {
     return (
         <div className="grid grid-cols-[40px,1fr] gap-4 md-gap-10">
             <div className="flex flex-col items-center gap-4">
@@ -22,7 +28,7 @@ export const ExperienceItem = () => {
                         target="_black"
                         className="text-gray-500 hover:text-emerald-500 transition-colors"
                     >
-                        @ Aria Engenharia
+                        @ {experience.companyName}
                     </a>
                     <h4 className="text-gray-300">Desenvolvedor Front-End</h4>
                     <span className="text-gray-500">
