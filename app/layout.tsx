@@ -5,6 +5,20 @@ import { Header } from './components/header'
 import { ContactForm } from './components/contact-form'
 import { Footer } from './components/footer'
 import { BackToTOP } from './components/back-to-top'
+import { de } from 'date-fns/locale'
+
+
+export const metadata = {
+  title: {
+    default: 'Home',
+    template: ' %s | Diogo B Ramuski Dev'
+  },
+  icons: [
+    {
+      url: '/favicon.svg'
+    }
+  ]
+}
 
 const inter = Inter({
   variable: '--font-inter',
