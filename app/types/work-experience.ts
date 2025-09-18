@@ -6,7 +6,7 @@ export type WorkExperience = {
         url: string
     }
     role: string
-    companyName: string 
+    companyName: string
     companyUrl: string
     startDate: string
     endDate: string
